@@ -1,0 +1,9 @@
+
+1¡¢py-eureka-client¿Í»§¶Ë
+	pip install py_eureka_client
+
+2¡¢pandas
+	pip install pandas
+
+3¡¢numpy
+	pip install numpy

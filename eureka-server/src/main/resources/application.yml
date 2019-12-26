@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: Eureka-Server
+  profiles:
+    active: "dev"
+
+server:
+  port: 31091
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://localhost:${server.port}/eureka/
+
+spring.cloud.config.discovery.enabled: true
+
+---
+spring:
+  profiles: dev
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+---
+spring:
+  profiles: test
+
+server:
+  address: 120.76.53.101
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://${server.address}:${server.port}/eureka/
